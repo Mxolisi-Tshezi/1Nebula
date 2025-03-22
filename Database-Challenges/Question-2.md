@@ -44,9 +44,9 @@ The script breaks down and rebuilds each email address using the following logic
 
 ### Example Transformations
 
-| Original Email          | Updated Email           |
-| ----------------------- | ----------------------- |
-| john.doe@gmail.com      | john.doe@company.com    |
+| Original Email     | Updated Email        |
+| ------------------ | -------------------- |
+| john.doe@gmail.com | john.doe@company.com |
 
 ## Implementation Steps
 
