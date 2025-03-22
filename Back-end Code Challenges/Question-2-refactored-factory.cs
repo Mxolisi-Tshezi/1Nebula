@@ -6,11 +6,13 @@ public interface IRobotService
     Robot BuildRobotDrone(List<Parts> parts);
     Robot BuildRobotCar(List<Parts> parts);
 }
-
+/// Interface for parts service operations
 public interface IPartsService
 {
     List<Parts> GetParts(Enum type);
 }
+
+//Interface for car service operations
 
 public interface ICarService
 {
@@ -62,13 +64,13 @@ public class Factory
     private readonly IPartsService _partsService;
     private readonly ICarService _carService;
     private readonly Dictionary<Enum, IRobotBuildStrategy> _robotBuildStrategies;
-    
+
     public Factory(IRobotService robotService, IPartsService partsService, ICarService carService)
     {
         _robotService = robotService ?? throw new ArgumentNullException(nameof(robotService));
         _partsService = partsService ?? throw new ArgumentNullException(nameof(partsService));
         _carService = carService ?? throw new ArgumentNullException(nameof(carService));
-        
+
         // Initialize strategies
         _robotBuildStrategies = new Dictionary<Enum, IRobotBuildStrategy>
         {
@@ -85,10 +87,12 @@ public class Factory
         {
             return null;
         }
-        
+
         var parts = GetRobotPartsFor(robotType);
         return strategy.Build(_robotService, parts);
     }
+
+    /// Builds a car of the specified type
 
     public Car BuildCar(Enum carType)
     {
@@ -96,15 +100,19 @@ public class Factory
         {
             return null;
         }
-        
+
         var parts = GetCarPartsFor(carType);
         return _carService.BuildCar(parts);
     }
+
+    /// Gets parts for building a robot
 
     public List<Parts> GetRobotPartsFor(Enum robotType)
     {
         return _partsService.GetParts(robotType);
     }
+
+    /// Gets parts for building a car
 
     public List<Parts> GetCarPartsFor(Enum carType)
     {
