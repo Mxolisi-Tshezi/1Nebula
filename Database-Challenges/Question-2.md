@@ -47,21 +47,11 @@ The script breaks down and rebuilds each email address using the following logic
 | Original Email          | Updated Email           |
 | ----------------------- | ----------------------- |
 | john.doe@gmail.com      | john.doe@company.com    |
-| alice.smith@outlook.com | alice.smith@company.com |
-| bob.jones@yahoo.co.za   | bob.jones@company.co.za |
-
-## Database Compatibility
-
-The script provides alternatives for different database systems:
-
-- **MySQL/MariaDB**: Uses `SUBSTRING_INDEX` and `CONCAT`
-- **PostgreSQL**: Uses `SPLIT_PART` and string concatenation (`||`)
-- **SQL Server**: Uses `CHARINDEX`, `LEFT`, `RIGHT`, and string concatenation (`+`)
 
 ## Implementation Steps
 
 1. Import the Employee File.csv into your SQL database
-2. Run the appropriate version of the SQL script for your database system
+2. Run the SQL script for the database
 3. Verify the results with a SELECT query:
 
 ```sql
